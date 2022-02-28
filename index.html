@@ -252,6 +252,7 @@
                 var date = data_hist.response[0].day;
 
                 $("#date").attr("value", date);
+                $("#hist_country").append(country)
                 var table_hitory = "";
                 for (let i = 0; i < data_hist.response.length; i++) {
                     var case_active = data_hist.response[i].cases.active;
