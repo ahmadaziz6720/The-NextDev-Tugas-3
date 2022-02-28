@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tugas 3</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- BAGIAN NAVBAR -->
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark " style="background-color: #100f4a;">
+        <div class="container">
+            <!-- bagian logo -->
+            <a class="navbar-brand" href="https://ahmadaziz6720.github.io/The-NextDev-Tugas-1/" style="margin: 0;">
+                <b>DATA COVID-19</b>
+            </a>
+            <!-- tombol responsive -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- link navigation bar -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto">
+                    <!-- produk -->
+                    <li class="nav-item">
+                        <a class="nav-link active fw-bold" href="#" style="color: white;" aria-current="page">Beranda</a>
+                    </li>
+                    <!-- download dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle fw-bold" href="#" role="button" data-bs-toggle="dropdown" style="color: white;" id="navbarDropdown" aria-expanded="false">
+                        Download
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Play Store</a></li>
+                            <li><a class="dropdown-item" href="#">App Store</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Windows</a></li>
+                            <li><a class="dropdown-item" href="#">Mac OS</a></li>
+                            <li><a class="dropdown-item" href="#">Linux</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-bold" href="#" style="color: white;">Kontak</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-bold" href="#" style="color: white;">Tentang</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle fw-bold" href="#" role="button" data-bs-toggle="dropdown" style="color: white;" id="navbarDropdown" aria-expanded="false">
+                        Akun
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Daftar</a></li>
+                            <li><a class="dropdown-item" href="#">Masuk</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12 p-3 mt-5" style="color: #100f4a;">
+
+                <!-- utama -->
+                <div class="border rounded mt-3 p-3" id="utama">
+                    <h1>Halo Dunia</h1>
+                    <h3>Berikut adalah daftar negara-negara</h3>
+                    <form>
+                        <select class="form-select" id="optn" aria-label="Default select example">
+                            <!-- Dari API -->
+                        </select>
+                        <br>
+                        <button type="button" class="btn btn-primary" onclick="toStatistics()">Lihat Data</button>
+                    </form>
+                </div>
+
+                <div class="border rounded mt-3 p-3" style="display:none" id="stat">
+                    <!-- tampilkan statistics -->
+                    <h3 id="country"></h3>
+                    <div id="p"></div>
+                    <hr>
+                    <div id="info" class="col-sm-5">
+                        <table class="table table-borderless">
+                            <tr>
+                                <td>Total Populasi:</td>
+                                <td id="population"></td>
+                            </tr>
+                            <tr>
+                                <td>Update Data:</td>
+                                <td id="day"></td>
+                            </tr>
+                        </table>                        
+                    </div>
+                    <div id="card" class="row"></div>
+                    <button type="button" class="btn btn-primary" onclick="toHistory()">Lihat Detail dan History</button>
+
+                    <!-- ------------history------- -->
+                    <div class="modal" id="hist" tabindex="-1" style="display:none; background-color:rgba(0, 0, 0, .75)">
+                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="hist_country"></h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="closeHist()"></button>
+                            </div>
+                            <div class="modal-body" id="table_history">
+                                
+                            </div>
+                            <div class="modal-footer">
+                                <input type="date" id="date">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="closeHist()">Close</button>
+                                <button type="button" class="btn btn-primary" onclick="changeDate()">Lihat Data</button>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BAGIAN FOOTER -->
+    <footer class="bg-light text-center text-lg-start">
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: #100f4a; color: white;">
+        © 2022 The NextDev | Ahmad Aziz
+        </div>
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        // Ambil list negara
+        var country;
+        var card ="";
+        var day;
+        var date;
+        fetch("https://covid-193.p.rapidapi.com/countries", {
+            "method": "GET",
+            "headers": {
+                "x-rapidapi-host": "covid-193.p.rapidapi.com",
+                "x-rapidapi-key": "ea24f4a270msh3f42e943355c4cep19e25bjsn6e438a1133c8"
+            }
+        })
+        .then(response_countries => {
+            return response_countries.json();
+        })
+        .then((data_countries) => {
+            let response_countries = data_countries;
+            var optn = "<option value='96' selected>Indonesia</option>";
+            countries = data_countries;
+            for (let i = 0; i < countries.response.length; i++) {
+                optn += '<option value="'+i+'">'+countries.response[i]+'</option>"';
+            }
+            document.getElementById("optn").innerHTML = optn;
+        })
+        .catch(err => {
+            console.error(err);
+        });
+
+        // Tentukan negara yang dipilih user
+        function toStatistics(){
+            var selected_country = document.getElementById("optn");
+            console.log(selected_country.value);
+            country = countries.response[selected_country.value];
+            $("#utama").hide();
+            $("#stat").show();
+
+            // ambil data statistik
+            var link_stat = "https://covid-193.p.rapidapi.com/statistics?country="+country;
+            fetch(link_stat, {
+            "method": "GET",
+            "headers": {
+                "x-rapidapi-host": "covid-193.p.rapidapi.com",
+                "x-rapidapi-key": "ea24f4a270msh3f42e943355c4cep19e25bjsn6e438a1133c8"
+            }
+            })
+            .then(response_stat => {
+                return response_stat.json();
+            })
+            .then((data_stat) => {
+                let response_stat = data_stat;
+                var stat = data_stat;
+
+                var country_stat = data_stat.response[0].country
+                var continent = data_stat.response[0].continent; 
+                var population = data_stat.response[0].population; 
+                day = data_stat.response[0].day;
+
+                var case_active = data_stat.response[0].cases.active;
+                var case_new = data_stat.response[0].cases.new;
+                var case_recovered = data_stat.response[0].cases.recovered;
+                var case_total = data_stat.response[0].cases.total;
+                var death_total = data_stat.response[0].deaths.total;
+                var death_new = data_stat.response[0].deaths.new;
+                var test = data_stat.response[0].tests.total;
+
+                // Tampilkan nama negara
+                $("#country").text(country_stat+"  ");
+                $("#country").append('<span class="badge bg-secondary">'+continent+'</span>');
+                $("#p").append("<p>Data Statistik Covid-19 di "+country_stat+"</p>");
+                
+                
+                // tampilkan info negara
+                $("#population").text(population);
+                $("#day").text(day);
+
+                // Tampilkan card
+                var list_title = ["Kasus Aktif", "Kasus Baru", "Total Kasus", "Total Kematian", "Kematian Terbaru", "Jumlah Tes"];
+                var list_data = [case_active, case_new, case_total, death_total, death_new, test];
+                var list_img = ["img/death.png", "img/death.png", "img/death.png", "img/death.png", "img/death.png", "img/death.png"];
+
+                for (let i = 0; i < list_title.length; i++) {
+                    card += '<div class="col-sm-4 my-2"><div class="card"><div class="card-body"><h5 class="card-title">'+list_title[i]+'</h5><p class="card-text">'+list_data[i]+'</p></div></div></div>'
+                }
+                $("#card").append(card);
+
+            })
+            .catch(err => {
+                console.error(err);
+            });
+        }
+
+        
+        function toHistory(){
+            $("#hist").fadeOut();
+            $("#hist").fadeIn();
+
+            var link_hist = "https://covid-193.p.rapidapi.com/history?country="+country+"&day="+day;
+            fetch(link_hist, {
+                "method": "GET",
+                "headers": {
+                    "x-rapidapi-host": "covid-193.p.rapidapi.com",
+                    "x-rapidapi-key": "ea24f4a270msh3f42e943355c4cep19e25bjsn6e438a1133c8"
+                }
+            })
+            .then(response_hist => {
+                return response_hist.json();
+            })
+            .then((data_hist) => {
+                let response_hist = data_hist;
+                var hist = data_hist;
+                console.log(day);
+                console.log(country);
+                console.log(hist);
+
+                var continent = data_hist.response[0].continent; 
+                var population = data_hist.response[0].population; 
+                var date = data_hist.response[0].day;
+
+                $("#date").attr("value", date);
+                var table_hitory = "";
+                for (let i = 0; i < data_hist.response.length; i++) {
+                    var case_active = data_hist.response[i].cases.active;
+                    var case_new = data_hist.response[i].cases.new;
+                    var case_recovered = data_hist.response[i].cases.recovered;
+                    var case_critical = data_hist.response[i].cases.critical;
+                    var case_total = data_hist.response[i].cases.total;
+                    var death_total = data_hist.response[i].deaths.total;
+                    var death_new = data_hist.response[i].deaths.new;
+                    var test = data_hist.response[i].tests.total;
+                    var time = data_hist.response[i].time;
+
+                    table_hitory += '<table class="table table-borderless"><p>'+time+'</p><hr><tr><td>Kasus Baru</td><td>'+case_new+'</td></tr><tr><td>Kasus Aktif</td><td>'+case_active+'</td></tr><tr><td>Kritis</td><td>'+case_critical+'</td></tr><tr><td>Kematian</td><td>'+death_new+'</td></tr><tr><td>Total Kematian</td><td>'+death_total+'</td></tr><tr><td>Sembuh</td><td>'+case_recovered+'</td></tr><tr><td>Total Kasus</td><td>'+case_total+'</td></tr><tr><td>Total Tes</td><td>'+test+'</td></tr></table>'
+                }
+            $("#table_history").append(table_hitory)
+            })
+            .catch(err => {
+                console.error(err);
+            });
+        }
+
+        function changeDate(){
+            var selected_date = document.getElementById("date");
+            console.log(selected_date.value);
+            date = selected_date.value;
+            day = date;
+            table_hitory = "";
+            toHistory();
+        }
+
+        function closeHist(){
+            $("#hist").fadeOut();
+        }
+        
+
+
+        // 1. Tampilin list negara #######
+        // 2. Tampilin data negara #######
+        // 3. tampilkan history negara
+
+
+    </script>
+</body>
+</html>
+
