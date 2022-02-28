@@ -252,7 +252,7 @@
                 var date = data_hist.response[0].day;
 
                 $("#date").attr("value", date);
-                $("#hist_country").append(country)
+                $("#hist_country").text(country)
                 var table_hitory = "";
                 for (let i = 0; i < data_hist.response.length; i++) {
                     var case_active = data_hist.response[i].cases.active;
@@ -265,7 +265,7 @@
                     var test = data_hist.response[i].tests.total;
                     var time = data_hist.response[i].time;
 
-                    table_hitory += '<table class="table table-borderless"><p>'+time+'</p><hr><tr><td>Kasus Baru</td><td>'+case_new+'</td></tr><tr><td>Kasus Aktif</td><td>'+case_active+'</td></tr><tr><td>Kritis</td><td>'+case_critical+'</td></tr><tr><td>Kematian</td><td>'+death_new+'</td></tr><tr><td>Total Kematian</td><td>'+death_total+'</td></tr><tr><td>Sembuh</td><td>'+case_recovered+'</td></tr><tr><td>Total Kasus</td><td>'+case_total+'</td></tr><tr><td>Total Tes</td><td>'+test+'</td></tr></table>'
+                    table_hitory += '<table class="table table-borderless" id="remove" ><p>'+time+'</p><hr><tr><td>Kasus Baru</td><td>'+case_new+'</td></tr><tr><td>Kasus Aktif</td><td>'+case_active+'</td></tr><tr><td>Kritis</td><td>'+case_critical+'</td></tr><tr><td>Kematian</td><td>'+death_new+'</td></tr><tr><td>Total Kematian</td><td>'+death_total+'</td></tr><tr><td>Sembuh</td><td>'+case_recovered+'</td></tr><tr><td>Total Kasus</td><td>'+case_total+'</td></tr><tr><td>Total Tes</td><td>'+test+'</td></tr></table>'
                 }
             $("#table_history").append(table_hitory)
             })
@@ -279,6 +279,7 @@
             console.log(selected_date.value);
             date = selected_date.value;
             day = date;
+            $("#remove").remove();
             table_hitory = "";
             toHistory();
         }
