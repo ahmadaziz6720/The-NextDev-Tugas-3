@@ -67,16 +67,52 @@
             <div class="col-xl-12 p-3 mt-5" style="color: #100f4a;">
 
                 <!-- utama -->
-                <div class="border rounded mt-3 p-3" id="utama">
-                    <h3>Selamat Datang</h3>
-                    <h5>Website Data Covid-19 Dunia</h5>
-                    <form>
-                        <select class="form-select" id="optn" aria-label="Default select example">
-                            <!-- Dari API -->
-                        </select>
-                        <br>
-                        <button type="button" class="btn btn-primary" onclick="toStatistics()">Lihat Data</button>
-                    </form>
+                <div class=" row border rounded mt-3 p-3" id="utama">
+                    <div class="col-md-6">
+                        <h3>Selamat Datang</h3>
+                        <h5>Website Data Covid-19 Dunia</h5>
+                        <p>Webiste ini menampilkan data Covid-19 terbaru dari semua negara di dunia. Data yang ditampilkan merupakan data dari API Covid-19 RapidAPI.</p>
+                        <p>Jagalah kesehatan Anda selama pandemi Covid-19. Patuhi protokol kesehatan, menggunakan masker, mencuci tangan, dan juga menjaga jarak.</p>
+                        <p>Website ini merupakan tugas 3 program The NextDev by Telkomsel.</p>
+                        <hr>
+                        <h5>Pilih negara</h5>
+                        <form>
+                            <select class="form-select" id="optn" aria-label="Default select example">
+                                <!-- Dari API -->
+                            </select>
+                            <br>
+                            <button type="button" class="btn btn-primary" onclick="toStatistics()">Lihat Data</button>
+                        </form>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div id="carouselExampleIndicators" class="carousel slide border rounded p-3" data-bs-ride="carousel">
+                            <div class="carousel-indicators">
+                              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                            </div>
+                            <div class="carousel-inner">
+                              <div class="carousel-item active">
+                                <img src="img/1.jpg" class="d-block w-100" alt="...">
+                              </div>
+                              <div class="carousel-item">
+                                <img src="img/2.jpg" class="d-block w-100" alt="...">
+                              </div>
+                              <div class="carousel-item">
+                                <img src="img/3.jpg" class="d-block w-100" alt="...">
+                              </div>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                              <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                              <span class="visually-hidden">Next</span>
+                            </button>
+                          </div>
+                    </div>
                 </div>
 
                 <div class="border rounded mt-3 p-3" style="display:none" id="stat">
